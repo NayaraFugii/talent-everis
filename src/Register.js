@@ -1,10 +1,10 @@
 import React from 'react'
+import './style/Register.css'
 import { useState } from 'react';
 import Input from './components/Input'
 import ButtonApp from './components/Button'
 import firebase  from './firebase'
-
-
+import logo from './img/logo.png'
 
 function RegisterApp() {
     const [name, setName] = useState("");
@@ -35,7 +35,11 @@ function RegisterApp() {
     }
     return (
         <>
-        <h1> Cadastro</h1>
+        <div className= "background">
+        <header className="header">
+            <img src={logo} alt="" className="logo" id="logo"/>
+        </header>
+        <form className="formRegister">
             <Input   
                 inputType="text"
                 inputPlaceholder=" Digite seu Nome"
@@ -73,6 +77,8 @@ function RegisterApp() {
                 buttonText="Cadastrar"
                 btnClassName="btnForm"
                 />
+        </form>        
+        </div>        
         </>
     );
 }
