@@ -2,10 +2,42 @@ import React from 'react'
 import ButtonApp from './components/Button'
 import { useHistory } from 'react-router-dom'
 import firebase  from './firebase'
+import TextArea from './components/Text'
+import { useState } from 'react';
 
 function Feed() {
+  const [post, setPost] = useState("");
+  const userId = localStorage.getItem("uid")
+  //let docRef = db.collection("post").doc();
+  //const db = firebase.firestore();
+   //let userRef = db.collection('users').doc(userId).get();
+  const history = useHistory();
+  const username = firebase.auth().currentUser
 
-    const history = useHistory()
+
+  console.log(username)
+  const newPost= async(e)=>{
+    e.preventDefault()
+  
+    try{
+      if(post){
+        console.log("deu certo")
+        let newPostArray = {
+         text: post,
+          id:userId,
+          //user: firebase.auth().currentUser.user,
+          like: [],        
+        }  
+        console.log(newPostArray)    
+      }else{
+        console.log(" deu ruim")
+      }
+   
+    }catch(error){
+      console.log("nao deu")
+    }
+    
+  }
 
     const routerHome = () => {
         history.push('/')
@@ -21,9 +53,21 @@ function Feed() {
 
     }  
 
+
   return (
     <>
-      <h1>Feed</h1>
+      <TextArea
+       textClassName="textFeed"
+       textPlaceholder="O que está acontecendo?"
+       textOnChange={(event) => setPost(event.target.value)}
+       textType= "text"
+      />
+       <ButtonApp
+        buttonOnClick = {newPost}
+        buttonText="Tweet"
+        btnClassName="btnPost"
+      />
+
       <ButtonApp
         buttonOnClick = {logout}
         buttonText="Sair"
