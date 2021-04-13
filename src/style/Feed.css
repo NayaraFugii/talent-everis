@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.FeedBackground{
+    background-color: #333333;
+	min-height: 100vh;
+    display: flex;
+}
+
+.btnExit{
+    background-size: cover;
+    width: 100px;
+    margin: 20px auto;
+    border: none;
+    border-radius: 15px;
+}
+
+.FeedArea{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 400px;
+    margin: 100px auto;
+}
+
+
+.btnPost{
+    margin: 20px auto;
+    border: none;
+    background-color:#6699cc;
+    color: #E6E6E6;
+    font-weight: bold;
+    border-radius: 15px;
+    width: 77px;
+    height: 23px;
+}
+
+.header{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.logoCrow{
+    margin-top: 15vh;
+    width: 150px;
+    height: 162px;
+}
