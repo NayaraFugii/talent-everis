@@ -11,19 +11,27 @@
     display: flex;
 }
 
+.flexContainer{
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+
 .btnExit{
     background-size: cover;
     width: 100px;
-    margin: 20px auto;
+    height: 20px;
+    margin: 20px;
     border: none;
     border-radius: 15px;
 }
 
 .FeedArea{
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    width: 400px;
+    width: 500px;
     margin: 100px auto;
 }
 
@@ -48,4 +56,5 @@
     margin-top: 15vh;
     width: 150px;
     height: 162px;
+    margin-left: 52px;
 }
