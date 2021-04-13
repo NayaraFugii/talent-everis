@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.home {
+    height: 100vh;
+    background-image: url('../img/background.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoHome {
+    height: 200px;
+    width: 150px;
+    margin-top: 15vh;
+}
+
+.buttonsHome {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15vh;
+}
+
+.btnLogin {
+    height: 25px;
+    width: 100px;
+    margin: 20px;
+    border: none;
+    background-color:#6699cc;
+    color: #E6E6E6;
+    font-weight: bold;
+    border-radius: 15px;
+}
+
+.btnLogin:hover {
+	background-color: rgb(151, 158, 158);
+}
