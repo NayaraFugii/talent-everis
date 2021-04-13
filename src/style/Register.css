@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.background {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+	background-image: url(../img/background.png);
+	background-size: cover;
+}
+
+.header{
+	display: flex;
+	justify-content: center;
+}
+
+.logo{
+	margin-top: 15vh;
+	display: flex;
+	align-items: center;
+	height: 200px;
+    width: 150px;
+}
+.formRegister{
+	width: 350px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+}
+.RegisterInput{
+	border-radius: 5px;
+	margin: 20px;
+	height: 25px;
+    margin-bottom: 5px;
+}
+
+.btnForm {
+	height: 25px;
+    width: 100px;
+    margin: 20px auto;
+    border: none;
+    background-color:#6699cc;
+    color: #E6E6E6;
+    font-weight: bold;
+    border-radius: 15px;
+}
+.btnForm:hover {
+	background-color: rgb(151, 158, 158);
+}
