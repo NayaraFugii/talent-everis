@@ -1,4 +1,5 @@
 import React from 'react'
+import './style/Register.css'
 import { useState } from 'react';
 import Input from './components/Input'
 import ButtonApp from './components/Button'
