@@ -1,5 +1,4 @@
 import React from 'react'
-import './style/Register.css'
 import { useState } from 'react';
 import Input from './components/Input'
 import ButtonApp from './components/Button'
@@ -34,7 +33,7 @@ function RegisterApp() {
        
     }
     return (
-        <>
+         <>
         <div className= "background">
         <header className="header">
             <img src={logo} alt="" className="logo" id="logo"/>
