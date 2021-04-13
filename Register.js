@@ -5,7 +5,6 @@ import ButtonApp from './components/Button'
 import firebase from './firebase'
 
 
-
 function RegisterApp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
