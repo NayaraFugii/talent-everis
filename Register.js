@@ -2,7 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 import Input from './components/Input'
 import ButtonApp from './components/Button'
-import firebase from './firebase'
+import firebase  from './firebase'
+
 
 
 function RegisterApp() {
@@ -10,17 +11,25 @@ function RegisterApp() {
     const [email, setEmail] = useState("");
     const [user, userEmail] = useState("");
     const [password, setPassword] = useState("");
+    const db = firebase.firestore();
 
     const newUser = (e)=>{
         e.preventDefault()
-        
-        if(!name || !email || !user || !password){
-        console.log("deu ruim")
-        }else{
+        try{
+            if(!name || !email || !user || !password || password.length < 6){
+               throw Error('Erro ao efetuar o cadastro')
+            }
+
             firebase.auth().createUserWithEmailAndPassword(email, password)
             const userId = firebase.auth().currentUser.uid            
-            console.log(userId, name, email, user)
-        }
+            db.collection("users").doc(userId).set({
+                name: name[0].toUpperCase() + name.slice(1),
+                email: email,
+                user: user
+            })
+        }catch(error){
+            console.log(error)
+        }       
        
     }
     return (
@@ -52,7 +61,7 @@ function RegisterApp() {
 
             <Input   
                 inputType="password"
-                inputPlaceholder=" Digite sua senha"
+                inputPlaceholder=" Digite sua senha 6 digitos"
                 inputValue={password}
                 inputOnChange={(event) => setPassword(event.target.value)}
                 inputClassName="RegisterInput"
@@ -60,7 +69,7 @@ function RegisterApp() {
 
             <ButtonApp
                 buttonOnClick = {newUser}
-                buttonText="Login"
+                buttonText="Cadastrar"
                 btnClassName="btnForm"
                 />
         </>

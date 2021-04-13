@@ -1,5 +1,4 @@
 import ButtonApp from './components/Button'
-import ReactDOM from 'react-dom';
 import { useHistory } from 'react-router-dom'
 
 
