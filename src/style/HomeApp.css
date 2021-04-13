@@ -37,3 +37,7 @@
     font-weight: bold;
     border-radius: 15px;
 }
+
+.btnLogin:hover {
+	background-color: rgb(151, 158, 158);
+}
