@@ -1,9 +1,11 @@
 import React from 'react'
-import { useState } from 'react';
+import './style/Login.css'
+import { useState } from 'react'
 import Input from './components/Input'
 import ButtonApp from './components/Button'
 import { useHistory } from 'react-router-dom'
 import firebase  from './firebase'
+import logo from './img/logo.png'
 
 
 function LoginApp() {
@@ -36,7 +38,11 @@ function LoginApp() {
 
   return (
     <>
-    <h1>Login</h1>
+    <div className= "background">
+    <header className="header">
+    <img src={logo} alt="" className="logo" id="logo"/>
+    </header>
+    <form className="formLogin">
       <Input   
           inputType="text"
           inputPlaceholder=" Digite seu E-mail"
@@ -51,13 +57,14 @@ function LoginApp() {
         inputValue={password}
         inputOnChange={(event) => setPassword(event.target.value)}
         inputClassName="LoginInput"
-      />
-
+      />   
       <ButtonApp
           buttonOnClick = {acess}
           buttonText="Login"
           btnClassName="btnForm"
         />
+         </form>
+        </div>
     </>
   );
 }

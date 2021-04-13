@@ -1,5 +1,7 @@
 import ButtonApp from './components/Button'
 import { useHistory } from 'react-router-dom'
+import Logo from './img/logo.png'
+import './style/HomeApp.css'
 
 
 function HomeApp() {
@@ -16,17 +18,22 @@ function HomeApp() {
   
   return (
     <>
-      <ButtonApp 
-          buttonOnClick ={routerLogin}  
-          buttonText="Login"
-          btnClassName="btnLogin"
-        />
+      <div className='home'>
+        <img className='logoHome'src={Logo} alt='Corvo com as asas abertas com a palavra crow escrito embaixo'/>
+        <div className='buttonsHome'>
+            <ButtonApp 
+              buttonOnClick ={routerLogin}  
+              buttonText="Login"
+              btnClassName="btnLogin"
+            />
 
-      <ButtonApp 
-        buttonOnClick ={routerRegister}    
-        buttonText="Cadastro"
-        btnClassName="btnLogin"
-      />
+          <ButtonApp 
+            buttonOnClick ={routerRegister}    
+            buttonText="Cadastro"
+            btnClassName="btnLogin"
+          />
+        </div>
+      </div>
     </>
   );
 }
