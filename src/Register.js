@@ -13,20 +13,21 @@ function RegisterApp() {
     const [password, setPassword] = useState("");
     const db = firebase.firestore();
 
-    const newUser = (e)=>{
+    const newUser = async (e)=>{
         e.preventDefault()
         try{
             if(!name || !email || !user || !password || password.length < 6){
                throw Error('Erro ao efetuar o cadastro')
             }
 
-            firebase.auth().createUserWithEmailAndPassword(email, password)
+            await firebase.auth().createUserWithEmailAndPassword(email, password)
             const userId = firebase.auth().currentUser.uid            
-            db.collection("users").doc(userId).set({
+            await db.collection("users").doc(userId).set({
                 name: name[0].toUpperCase() + name.slice(1),
                 email: email,
                 user: user
             })
+            console.log("oi")
         }catch(error){
             console.log(error)
         }       
