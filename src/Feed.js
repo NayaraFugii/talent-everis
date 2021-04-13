@@ -7,35 +7,42 @@ import { useState } from 'react';
 
 function Feed() {
   const [post, setPost] = useState("");
-  const userId = localStorage.getItem("uid")
-  //let docRef = db.collection("post").doc();
-  //const db = firebase.firestore();
-   //let userRef = db.collection('users').doc(userId).get();
+  const userId = localStorage.getItem("uid")  
+  const db = firebase.firestore();  
   const history = useHistory();
-  const username = firebase.auth().currentUser
+ 
 
-
-  console.log(username)
   const newPost= async(e)=>{
-    e.preventDefault()
-  
-    try{
-      if(post){
-        console.log("deu certo")
-        let newPostArray = {
-         text: post,
-          id:userId,
-          //user: firebase.auth().currentUser.user,
-          like: [],        
-        }  
-        console.log(newPostArray)    
-      }else{
-        console.log(" deu ruim")
-      }
-   
-    }catch(error){
-      console.log("nao deu")
+    e.preventDefault()  
+    var docRef = db.collection("users").doc(userId);
+
+    docRef.get().then((doc) => {
+    if (doc.exists) {
+        if(post){
+            let newPostArray = {
+            text: post,
+            id:userId,
+            user: doc.data().user,
+            like: [], 
+            coment:[]
+          } 
+          db.collection("post").doc().set({
+            ...newPostArray,
+            rt:[],
+        
+        })
+            console.log(newPostArray) 
+        }else{
+          console.log(" deu ruim")
+          }
+
+    } else {
+        console.log("No such document!");
     }
+}).catch((error) => {
+    console.log("Error getting document:", error);
+});
+  
     
   }
 
