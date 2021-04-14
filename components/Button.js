@@ -4,12 +4,13 @@ const ButtonApp=({
 
   buttonOnClick,
   buttonText,
-  btnClassName
+  btnClassName,
+  buttonImage
 
   })=>{
     return (
         <>
-          <button onClick={buttonOnClick} className={btnClassName}>{buttonText}</button>
+          <button onClick={buttonOnClick} className={btnClassName}>{buttonText} <img src= {buttonImage}></img></button>
         </>
       )
 

@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react';
 import ButtonApp from './Button'
 import firebase  from '../firebase'
 import TextArea from './Text'
+import share from '../img/share.png'
+import ImgComment from '../img/comment.png'
+import like from '../img/like.png'
+
 
 const db = firebase.firestore(); 
+
 
 const Tweets = () => {  
 
@@ -38,31 +43,36 @@ const Tweets = () => {
     }
 
     return (
-        <div>
+        <div className="ContainerTweets">
             <ul>
                 {posts && posts.map(post => {
                     return (
-                    <div key={post.postId}>
+                    <div className="tweets" key={post.id}>
+                        <h3>{post.user}</h3>
                         <h3>{post.data.user}</h3>
                         <p>{post.data.text}</p>
-                        <p>{post.data.coment.comment}</p>
-                            <div>
-                            <TextArea 
-                                textClassName="textComent"
-                                textPlaceholder="Comentar"
-                                textOnChange={(event) => setComment({postId: post.postId, comment: event.target.value})}
-                                textType= "text"
-                            />
-                            <ButtonApp 
+                        <p>{post.data.coment.comment}</p>  
+                        <TextArea 
+                            textClassName="textComent"
+                            textPlaceholder="Comentar"
+                            textOnChange={(event) => setComment({postId: post.postId, comment: event.target.value})}
+                            textType= "text"
+                        />
+                        <ButtonApp
                             buttonOnClick = {newComment}
-                            buttonText='Enviar'
-                            btnClassName="btnSend" 
-                            />
-                            </div>    
-                        <ButtonApp buttonText='curtir' />
-                        <ButtonApp buttonText='retweetar' />
-                        <ButtonApp buttonText='comentar' />
-
+                            buttonImage= {ImgComment}
+                            btnClassName="btnTweets"
+                        />      
+                        <ButtonApp
+                            // buttonOnClick = {logout}
+                            buttonImage= {share}
+                            btnClassName="btnTweets"
+                        />    
+                        <ButtonApp
+                            // buttonOnClick = {logout}
+                            buttonImage= {like}
+                            btnClassName="btnTweets"
+                        />                          
                     </div>)
                 })}
             </ul>     
