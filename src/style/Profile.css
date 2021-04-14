@@ -12,8 +12,7 @@
     min-height: 100vh;
     min-width: 100vw;
 }
-.cover{
-    background-color:#6699cc;
+.profile2{
     width: 700px;
     height: 167px;
 }
@@ -24,3 +23,18 @@
     padding: 20px;
 }
 
+.ContainerTweets{
+    display: flex;
+    justify-content: center;
+}
+
+.tweets{
+    color: #E6E6E6;
+    margin-bottom: 22px;
+    border-radius: 7px;
+    width: 386px;
+}
+
+.btnTweets{
+    margin: 12px;
+}

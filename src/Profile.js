@@ -4,6 +4,7 @@ import ButtonApp from './components/Button'
 import { useHistory } from 'react-router-dom'
 import firebase  from './firebase'
 import crow from './img/crow.png'
+import profile2 from './img/profile2.png'
 
 
 function Profile() {
@@ -30,7 +31,9 @@ function Profile() {
         <img src={crow} alt="" className="logoCrow"/>
       </header>
       <section className="template">
-      <div className="cover"></div>
+      <div className="cover">
+      <img src={profile2} alt="" className="profile2"/>
+      </div>
       <div className="ProfileArea"></div>
       <h1>Profile</h1>
       </section>
