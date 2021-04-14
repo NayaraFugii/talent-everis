@@ -1,67 +1,67 @@
 import React from 'react'
-import './style/Feed.css'
-import ButtonApp from './components/Button'
-import { useHistory } from 'react-router-dom'
-import firebase  from './firebase'
-import TextArea from './components/Text'
 import { useState } from 'react';
-import Tweets from './components/Tweets'
+import { useHistory } from 'react-router-dom'
+import ButtonApp from './components/Button'
+import TextArea from './components/Text'
 import crow from './img/crow.png'
+import Tweets from './components/Tweets'
+import firebase from './firebase'
+import './style/Feed.css'
 
 function Feed() {
   const [post, setPost] = useState("");
-  const userId = localStorage.getItem("uid")  
-  const db = firebase.firestore();  
+  const userId = localStorage.getItem("uid")
+  const db = firebase.firestore();
   const history = useHistory();
- 
 
-  const newPost= async(e)=>{
-    e.preventDefault()  
+
+  const newPost = async (e) => {
+    e.preventDefault()
     var docRef = db.collection("users").doc(userId);
 
     docRef.get().then((doc) => {
-    if (doc.exists) {
-        if(post){
-            let newPostArray = {
+      if (doc.exists) {
+        if (post) {
+          let newPostArray = {
             text: post,
-            id:userId,
+            id: userId,
             user: doc.data().user,
-            like: [], 
-            coment:[]
-          } 
+            like: [],
+            coment: []
+          }
           db.collection("post").doc().set({
             ...newPostArray,
-            rt:[],
-        
-        })
-            console.log(newPostArray) 
-        }else{
+            rt: [],
+
+          })
+          console.log(newPostArray)
+        } else {
           console.log(" deu ruim")
-          }
+        }
 
-    } else {
+      } else {
         console.log("No such document!");
-    }
-}).catch((error) => {
-    console.log("Error getting document:", error);
-});
+      }
+    }).catch((error) => {
+      console.log("Error getting document:", error);
+    });
 
-    
+
   }
 
-    const routerHome = () => {
-        history.push('/')
-    }
+  const routerHome = () => {
+    history.push('/')
+  }
 
-    const logout = async(e)=>{
-      e.preventDefault() 
-      localStorage.removeItem("uid");
-      await firebase.auth().signOut().then(() => {
-         routerHome()
+  const logout = async (e) => {
+    e.preventDefault()
+    localStorage.removeItem("uid");
+    await firebase.auth().signOut().then(() => {
+      routerHome()
 
-       })
+    })
 
-    }  
+  }
   return (
     <>
     <div className="FeedBackground"> 
