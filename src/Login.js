@@ -39,7 +39,7 @@ function LoginApp() {
   return (
     <>
     <div className= "background">
-    <header className="header">
+    <header className="headerLogin">
     <img src={logo} alt="" className="logo" id="logo"/>
     </header>
     <form className="formLogin">
