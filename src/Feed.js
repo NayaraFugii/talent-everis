@@ -1,13 +1,12 @@
 import React from 'react'
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom'
-
 import ButtonApp from './components/Button'
 import TextArea from './components/Text'
 import Tweets from './components/Tweets'
 import firebase from './firebase'
 import crow from './img/crow.png'
-
+import exit from './img/exit.png'
 import './style/Feed.css'
 
 function Feed() {
@@ -66,36 +65,32 @@ function Feed() {
   }
   return (
     <>
-      <div className="FeedBackground">
-        <div className="flexContainer">
-          <header className="header">
-            <img src={crow} alt="" className="logoCrow" id="logo" />
-          </header>
-          <div className="FeedArea">
-            <TextArea
-              textClassName="textFeed"
-              textPlaceholder="O que está acontecendo?"
-              textOnChange={(event) => setPost(event.target.value)}
-              textType="text"
-            />
-            <ButtonApp
-              buttonOnClick={newPost}
-              buttonText="Tweet"
-              btnClassName="btnPost"
-            />
-          </div>
-          <div>
-            <ButtonApp
-              buttonOnClick={logout}
-              buttonText="Sair"
-              btnClassName="btnExit"
-            />
-
-            <Tweets />
-
+    <div className="flexContainer">
+      <header className="header">
+        <img src={crow} alt="" className="logoCrow" id="logo"/>
+      </header>
+      <div className="FeedArea">
+        <TextArea
+        textClassName="textFeed"
+        textPlaceholder="O que está acontecendo?"
+        textOnChange={(event) => setPost(event.target.value)}
+        textType= "text"
+        />
+        <ButtonApp
+          buttonOnClick = {newPost}
+          buttonText="Tweet"
+          btnClassName="btnPost"
+        />
+          <Tweets />
+      </div>
+      <div>
+        <ButtonApp
+          buttonOnClick = {logout}
+          buttonImage= {exit}
+          btnClassName="btnExit"
+        />          
           </div>
         </div>
-      </div>
 
     </>
   );
