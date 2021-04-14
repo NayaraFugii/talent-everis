@@ -30,9 +30,11 @@ const Tweets = () => {
                 {posts && posts.map(post => {
                     return (
                     <div className="tweets" key={post.id}>
-                        <h3 className="postUser">
-                        <img src={avatar} alt="" className="profileAvatar"/>
-                        {post.user}</h3>
+                        <div className="profileData"> 
+                            <img src={avatar} alt="" className="profileAvatar"/>
+                            <h3 className="postUser">
+                            {post.user}</h3>
+                        </div>
                         <p className="postText">{post.text}</p>   
                         <div className='btns'>
                             <ButtonApp
