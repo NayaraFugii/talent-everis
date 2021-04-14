@@ -25,7 +25,7 @@ function RegisterApp() {
             await db.collection("users").doc(userId).set({
                 name: name[0].toUpperCase() + name.slice(1),
                 email: email,
-                user: user
+                user: "@" + user
             })
             console.log("oi")
         }catch(error){

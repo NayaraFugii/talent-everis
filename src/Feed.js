@@ -5,6 +5,9 @@ import { useHistory } from 'react-router-dom'
 import firebase  from './firebase'
 import TextArea from './components/Text'
 import { useState } from 'react';
+
+import Tweets from './components/Tweets'
+
 import crow from './img/crow.png'
 
 function Feed() {
@@ -61,8 +64,6 @@ function Feed() {
        })
 
     }  
-
-
   return (
     <>
     <div className="FeedBackground"> 
@@ -89,9 +90,13 @@ function Feed() {
         buttonText="Sair"
         btnClassName="btnExit"
       />
+
+      
+
       </div>
       </div>
     </div>
+
     </>
   );
 }
