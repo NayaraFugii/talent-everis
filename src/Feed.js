@@ -1,10 +1,12 @@
 import React from 'react'
+import './style/Feed.css'
 import ButtonApp from './components/Button'
 import { useHistory } from 'react-router-dom'
 import firebase  from './firebase'
 import TextArea from './components/Text'
 import { useState } from 'react';
 import Tweets from './components/Tweets'
+import crow from './img/crow.png'
 
 function Feed() {
   const [post, setPost] = useState("");
@@ -43,7 +45,7 @@ function Feed() {
 }).catch((error) => {
     console.log("Error getting document:", error);
 });
-  
+
     
   }
 
@@ -62,6 +64,12 @@ function Feed() {
     }  
   return (
     <>
+    <div className="FeedBackground"> 
+    <div className="flexContainer">
+    <header className="header">
+        <img src={crow} alt="" className="logoCrow" id="logo"/>
+      </header>
+      <div className="FeedArea">
       <TextArea
        textClassName="textFeed"
        textPlaceholder="O que está acontecendo?"
@@ -73,7 +81,8 @@ function Feed() {
         buttonText="Tweet"
         btnClassName="btnPost"
       />
-
+      </div>
+      <div>
       <ButtonApp
         buttonOnClick = {logout}
         buttonText="Sair"
@@ -82,6 +91,9 @@ function Feed() {
       
       <Tweets/>
       
+      </div>
+      </div>
+    </div>
     </>
   );
 }

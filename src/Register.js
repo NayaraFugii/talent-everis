@@ -34,7 +34,7 @@ function RegisterApp() {
        
     }
     return (
-        <>
+         <>
         <div className= "background">
         <header className="header">
             <img src={logo} alt="" className="logo" id="logo"/>
