@@ -7,6 +7,7 @@ import Tweets from './components/Tweets'
 import firebase from './firebase'
 import crow from './img/crow.png'
 import exit from './img/exit.png'
+import profile from './img/profile.png'
 import './style/Feed.css'
 
 function Feed() {
@@ -61,14 +62,23 @@ function Feed() {
       routerHome()
 
     })
+  }
 
+  const routerProfile = () => {
+    history.push('/profile')
   }
   return (
     <>
     <div className="flexContainer">
-      <header className="header">
+      <nav className="nav">
         <img src={crow} alt="" className="logoCrow" id="logo"/>
-      </header>
+        <ButtonApp
+          buttonOnClick = {routerProfile}
+          buttonImage= {profile}
+          buttonText="Perfil"
+          btnClassName="btnProfile"
+        />          
+      </nav>
       <div className="FeedArea">
         <TextArea
         textClassName="textFeed"
