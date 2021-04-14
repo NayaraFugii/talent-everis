@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ButtonApp from './Button'
 import firebase  from '../firebase'
+import TextArea from './Text'
 import share from '../img/share.png'
-import comment from '../img/comment.png'
+import ImgComment from '../img/comment.png'
 import like from '../img/like.png'
 import avatar from '../img/avatar.png'
 
@@ -13,6 +14,10 @@ const db = firebase.firestore();
 const Tweets = () => {  
 
     const [posts, setPosts] = useState()
+    const [comment, setComment] = useState({
+        postId:'',
+        comment: '', 
+    })
 
     useEffect(() => {
         getPosts()
@@ -20,8 +25,22 @@ const Tweets = () => {
 
     const getPosts = async () => {
         const response = await db.collection("post").get()
-        const result = response.docs.map(item => item.data())
+        const result = response.docs.map(item => {
+            return {
+                postId: item.id,
+                data: item.data()
+            }})
         setPosts(result)
+        }
+
+    const newComment = async (e)=>{
+        e.preventDefault();
+        const parent = e.target.parentNode.parentNode;
+        await db.collection("post").doc(comment.postId).set({
+            coment: comment ,
+       }, { merge: true })
+       console.log(parent, comment.postId, comment)
+
     }
 
     return (
@@ -33,13 +52,25 @@ const Tweets = () => {
                         <div className="profileData"> 
                             <img src={avatar} alt="" className="profileAvatar"/>
                             <h3 className="postUser">
-                            {post.user}</h3>
+                            {post.data.user}</h3>
                         </div>
-                        <p className="postText">{post.text}</p>   
+                        <p className="postText">{post.data.text}</p> 
+                            <p>{post.data.coment.comment}</p>
+                        <TextArea 
+                            textClassName="textComent"
+                            textPlaceholder="Comentar"
+                            textOnChange={(event) => setComment({postId: post.postId, comment: event.target.value})}
+                            textType= "text"
+                            />
+                            <ButtonApp
+                            buttonOnClick = {newComment}
+                            buttonImage= {ImgComment}
+                            btnClassName="btnTweets"
+                            />   
                         <div className='btns'>
                             <ButtonApp
                                 // buttonOnClick = {logout}
-                                buttonImage= {comment}
+                                buttonImage= {ImgComment}
                                 btnClassName="btnTweets"
                             />      
                             <ButtonApp
