@@ -4,6 +4,7 @@ import firebase  from '../firebase'
 import share from '../img/share.png'
 import comment from '../img/comment.png'
 import like from '../img/like.png'
+import avatar from '../img/avatar.png'
 
 
 const db = firebase.firestore(); 
@@ -29,24 +30,27 @@ const Tweets = () => {
                 {posts && posts.map(post => {
                     return (
                     <div className="tweets" key={post.id}>
-                        <h3>{post.user}</h3>
-                        <p>{post.text}</p>   
-
-                        <ButtonApp
-                            // buttonOnClick = {logout}
-                            buttonImage= {comment}
-                            btnClassName="btnTweets"
-                        />      
-                        <ButtonApp
-                            // buttonOnClick = {logout}
-                            buttonImage= {share}
-                            btnClassName="btnTweets"
-                        />    
-                        <ButtonApp
-                            // buttonOnClick = {logout}
-                            buttonImage= {like}
-                            btnClassName="btnTweets"
-                        />                          
+                        <h3 className="postUser">
+                        <img src={avatar} alt="" className="profileAvatar"/>
+                        {post.user}</h3>
+                        <p className="postText">{post.text}</p>   
+                        <div className='btns'>
+                            <ButtonApp
+                                // buttonOnClick = {logout}
+                                buttonImage= {comment}
+                                btnClassName="btnTweets"
+                            />      
+                            <ButtonApp
+                                // buttonOnClick = {logout}
+                                buttonImage= {share}
+                                btnClassName="btnTweets"
+                            />    
+                            <ButtonApp
+                                // buttonOnClick = {logout}
+                                buttonImage= {like}
+                                btnClassName="btnTweets"
+                            />    
+                        </div>                          
                     </div>)
                 })}
             </ul>     

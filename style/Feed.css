@@ -14,13 +14,23 @@
     min-width: 100vw;
 }
 
+.btns{
+    display: flex;
+    justify-content: space-between;
+}
 
 .btnExit,
+.btnProfile,
 .btnTweets{
-    margin: 3vh 3vw;
+    margin: 6vh 3vw;
     border: none;
     border-radius: 15px;
     background-color: #333333;
+    color: #E6E6E6;
+}
+
+.btnTweets{
+    margin:10px 10px 0 15px;
 }
 
 .btnExit img{
@@ -28,9 +38,12 @@
 }
 
 .btnTweets img{
-    width: 15px;
+    width: 20px;
 }
-
+.btnProfile img{
+    width: 25px;
+    margin-right: 14px;
+}
 
 .FeedArea{
     display: flex;
@@ -39,6 +52,13 @@
     margin: 100px auto;
 }
 
+.postUser{
+    font-size: 18px;
+    font-weight: bold;
+}
+.postText{
+    margin:10px 10px 0 15px;
+}
 
 .btnPost{
     margin: 20px auto;
@@ -54,15 +74,17 @@
 	background-color: rgb(151, 158, 158);
 }
 
-.header{
+.nav{
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     border-right: 1px solid #E6E6E6;
 }
 
 .logoCrow{
     margin-top: 15vh;
     width: 150px;
-    height: 162px;
+    height: 140px;
     padding: 40px;
 }
+
+
