@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import firebase  from './firebase'
 import TextArea from './components/Text'
 import { useState } from 'react';
+import Tweets from './components/Tweets'
 
 function Feed() {
   const [post, setPost] = useState("");
@@ -59,8 +60,6 @@ function Feed() {
        })
 
     }  
-
-
   return (
     <>
       <TextArea
@@ -80,7 +79,9 @@ function Feed() {
         buttonText="Sair"
         btnClassName="btnExit"
       />
-
+      
+      <Tweets/>
+      
     </>
   );
 }
