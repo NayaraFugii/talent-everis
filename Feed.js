@@ -65,31 +65,29 @@ function Feed() {
 
   return (
     <>
-    <div className="FeedBackground"> 
     <div className="flexContainer">
-    <header className="header">
+      <header className="header">
         <img src={crow} alt="" className="logoCrow" id="logo"/>
       </header>
       <div className="FeedArea">
-      <TextArea
-       textClassName="textFeed"
-       textPlaceholder="O que está acontecendo?"
-       textOnChange={(event) => setPost(event.target.value)}
-       textType= "text"
-      />
-       <ButtonApp
-        buttonOnClick = {newPost}
-        buttonText="Tweet"
-        btnClassName="btnPost"
-      />
+        <TextArea
+        textClassName="textFeed"
+        textPlaceholder="O que está acontecendo?"
+        textOnChange={(event) => setPost(event.target.value)}
+        textType= "text"
+        />
+        <ButtonApp
+          buttonOnClick = {newPost}
+          buttonText="Tweet"
+          btnClassName="btnPost"
+        />
       </div>
       <div>
-      <ButtonApp
-        buttonOnClick = {logout}
-        buttonText="Sair"
-        btnClassName="btnExit"
-      />
-      </div>
+        <ButtonApp
+          buttonOnClick = {logout}
+          buttonText="Sair"
+          btnClassName="btnExit"
+        />
       </div>
     </div>
     </>
