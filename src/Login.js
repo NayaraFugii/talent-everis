@@ -12,6 +12,7 @@ function LoginApp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory()
+    const db = firebase.firestore();
 
     const routerFeed = () => {
         history.push('/feed')
@@ -26,6 +27,9 @@ function LoginApp() {
       await firebase.auth().signInWithEmailAndPassword(email, password)
   
       const userId = await firebase.auth().currentUser.uid
+      db.collection('users').doc(userId).get().then((resolve) => {
+        localStorage.setItem("user", resolve.data().user)        
+    })
       localStorage.setItem("uid", userId);
       routerFeed();
         

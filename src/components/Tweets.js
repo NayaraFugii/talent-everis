@@ -9,6 +9,7 @@ import avatar from '../img/avatar.png'
 
 
 const db = firebase.firestore(); 
+const userName = localStorage.getItem("user")
 
 
 const Tweets = () => {  
@@ -38,8 +39,9 @@ const Tweets = () => {
         const parent = e.target.parentNode.parentNode;
         await db.collection("post").doc(comment.postId).set({
             coment: comment ,
+            userName: userName
        }, { merge: true })
-       console.log(parent, comment.postId, comment)
+       console.log(parent, userName, comment)
 
     }
 
@@ -55,6 +57,7 @@ const Tweets = () => {
                             {post.data.user}</h3>
                         </div>
                         <p className="postText">{post.data.text}</p> 
+                            <p>{post.data.userName}</p>
                             <p>{post.data.coment.comment}</p>
                         <TextArea 
                             textClassName="textComent"
