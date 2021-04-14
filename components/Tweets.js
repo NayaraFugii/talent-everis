@@ -5,6 +5,7 @@ import TextArea from './Text'
 import share from '../img/share.png'
 import ImgComment from '../img/comment.png'
 import like from '../img/like.png'
+import avatar from '../img/avatar.png'
 
 
 const db = firebase.firestore(); 
@@ -27,7 +28,7 @@ const Tweets = () => {
         const result = response.docs.map(item => {
             return {
                 postId: item.id,
-                data: item.data(), 
+                data: item.data()
             }})
         setPosts(result)
         }
@@ -48,31 +49,41 @@ const Tweets = () => {
                 {posts && posts.map(post => {
                     return (
                     <div className="tweets" key={post.id}>
-                        <h3>{post.user}</h3>
-                        <h3>{post.data.user}</h3>
-                        <p>{post.data.text}</p>
-                        <p>{post.data.coment.comment}</p>  
+                        <div className="profileData"> 
+                            <img src={avatar} alt="" className="profileAvatar"/>
+                            <h3 className="postUser">
+                            {post.data.user}</h3>
+                        </div>
+                        <p className="postText">{post.data.text}</p> 
+                            <p>{post.data.coment.comment}</p>
                         <TextArea 
                             textClassName="textComent"
                             textPlaceholder="Comentar"
                             textOnChange={(event) => setComment({postId: post.postId, comment: event.target.value})}
                             textType= "text"
-                        />
-                        <ButtonApp
+                            />
+                            <ButtonApp
                             buttonOnClick = {newComment}
                             buttonImage= {ImgComment}
                             btnClassName="btnTweets"
-                        />      
-                        <ButtonApp
-                            // buttonOnClick = {logout}
-                            buttonImage= {share}
-                            btnClassName="btnTweets"
-                        />    
-                        <ButtonApp
-                            // buttonOnClick = {logout}
-                            buttonImage= {like}
-                            btnClassName="btnTweets"
-                        />                          
+                            />   
+                        <div className='btns'>
+                            <ButtonApp
+                                // buttonOnClick = {logout}
+                                buttonImage= {ImgComment}
+                                btnClassName="btnTweets"
+                            />      
+                            <ButtonApp
+                                // buttonOnClick = {logout}
+                                buttonImage= {share}
+                                btnClassName="btnTweets"
+                            />    
+                            <ButtonApp
+                                // buttonOnClick = {logout}
+                                buttonImage= {like}
+                                btnClassName="btnTweets"
+                            />    
+                        </div>                          
                     </div>)
                 })}
             </ul>     

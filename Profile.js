@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom'
 import firebase  from './firebase'
 import crow from './img/crow.png'
 import profile2 from './img/profile2.png'
+import home from './img/home.png'
+import exit from './img/exit.png'
 
 
 function Profile() {
@@ -22,25 +24,33 @@ function Profile() {
      })
 
   }  
+  const routerProfile = () => {
+    history.push('/feed')
+  }
 
 
   return (
     <>
     <div className="flexContainer">
-      <header className="header">
+      <nav className="nav">
         <img src={crow} alt="" className="logoCrow"/>
-      </header>
+        <ButtonApp
+          buttonOnClick = {routerProfile}
+          buttonImage= {home}
+          buttonText="Feed"
+          btnClassName="btnProfile"
+        />    
+      </nav>
       <section className="template">
       <div className="cover">
       <img src={profile2} alt="" className="profile2"/>
       </div>
       <div className="ProfileArea"></div>
-      <h1>Profile</h1>
       </section>
       <div>
         <ButtonApp
           buttonOnClick = {logout}
-          buttonText="Sair"
+          buttonImage= {exit}
           btnClassName="btnExit"
         />
       </div>

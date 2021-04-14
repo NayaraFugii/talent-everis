@@ -13,8 +13,7 @@
     min-width: 100vw;
 }
 .profile2{
-    width: 700px;
-    height: 167px;
+    width: 71vw;
 }
 
 .template{
@@ -37,4 +36,9 @@
 
 .btnTweets{
     margin: 12px;
+}
+
+.profileAvatar{
+    width: 40px;
+    margin-right: 12px;
 }
