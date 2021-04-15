@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ButtonApp from './Button'
 import firebase  from '../firebase'
 import TextArea from './Text'
@@ -10,40 +10,50 @@ import avatar from '../img/avatar.png'
 
 const db = firebase.firestore(); 
 const userName = localStorage.getItem("user")
+const userId = localStorage.getItem("uid")
 
 
-const Tweets = () => {  
-
-    const [posts, setPosts] = useState()
+const Tweets = ({posts}) => {  
+    
+    const [countLike, setCountLike] = useState(0)
+    //const [posts, setPosts] = useState()
     const [comment, setComment] = useState({
         postId:'',
         comment: '', 
     })
 
-    useEffect(() => {
-        getPosts()
-    }, [])
+    //useEffect(() => {
+        //getPosts()
+   // }, [])
 
-    const getPosts = async () => {
-        const response = await db.collection("post").get()
-        const result = response.docs.map(item => {
-            return {
-                postId: item.id,
-                data: item.data()
-            }})
-        setPosts(result)
-        }
+    //const getPosts = async () => {
+       // const response = await db.collection("post").get()
+        //const result = response.docs.map(item => {
+            //return {
+              //  postId: item.id,
+               // data: item.data()
+           // }})
+        //setPosts(result)
+       // }
 
-    const newComment = async (e)=>{
-        e.preventDefault();
-        const parent = e.target.parentNode.parentNode;
-        await db.collection("post").doc(comment.postId).set({
+    const newComment = async (id)=>{       
+        await db.collection("post").doc(id).set({
             coment: comment ,
             userName: userName
        }, { merge: true })
-       console.log(parent, userName, comment)
+       console.log(userName, comment)
 
     }
+
+    const likePost = async (id) => {
+        await db.collection("post").doc(id).update({
+            likes: firebase.firestore.FieldValue.arrayUnion(userId),
+            like: firebase.firestore.FieldValue.increment(1),
+        })
+            //like: countLike +1,
+        //}, { merge: true })
+        console.log( countLike, setCountLike)
+    };
 
     return (
         <div className="ContainerTweets">
@@ -66,7 +76,7 @@ const Tweets = () => {
                             textType= "text"
                             />
                             <ButtonApp
-                            buttonOnClick = {newComment}
+                            buttonOnClick = {()=>{newComment(post.postId)}}
                             buttonImage= {ImgComment}
                             btnClassName="btnTweets"
                             />   
@@ -80,9 +90,10 @@ const Tweets = () => {
                                 // buttonOnClick = {logout}
                                 buttonImage= {share}
                                 btnClassName="btnTweets"
-                            />    
+                            /> 
+                            <p className="postText">{post.data.like}</p>   
                             <ButtonApp
-                                // buttonOnClick = {logout}
+                                buttonOnClick = {()=>{likePost(post.postId)}}
                                 buttonImage= {like}
                                 btnClassName="btnTweets"
                             />    
