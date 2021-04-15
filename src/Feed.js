@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import {useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import ButtonApp from './components/Button'
 import TextArea from './components/Text'
@@ -15,6 +15,23 @@ function Feed() {
   const userId = localStorage.getItem("uid")
   const db = firebase.firestore();
   const history = useHistory();
+  const [posts, setPosts] = useState()
+  const userName = localStorage.getItem("user")
+
+  useEffect(() => {
+    getPosts()
+}, [])
+
+const getPosts = async () => {
+    const response = await db.collection("post").get()
+    const result = response.docs.map(item => {
+        return {
+            postId: item.id,
+            data: item.data()
+        }})
+    setPosts(result)
+    }
+
 
 
   const newPost = async (e) => {
@@ -23,20 +40,36 @@ function Feed() {
 
     docRef.get().then((doc) => {
       if (doc.exists) {
+        console.log(doc)
         if (post) {
-          let newPostArray = {
+          let newPostObject = {
             text: post,
             id: userId,
             user: doc.data().user,
-            like: [],
-            coment: []
+            like: 0,
+            likes:[],
+            coment: ""
           }
           db.collection("post").doc().set({
-            ...newPostArray,
-            rt: [],
+            ...newPostObject,
+        
 
           })
-          console.log(newPostArray)
+          console.log(newPostObject)
+          setPosts(prevState => {
+            // Object.assign would also work
+            return [...prevState, {
+              postId: "teste",
+              data: {
+                user: userName,
+                text: post,
+                userName : userName,
+                coment:{
+                  comment: ""
+                }
+              }
+            }]
+          });
         } else {
           console.log(" deu ruim")
         }
@@ -91,7 +124,7 @@ function Feed() {
           buttonText="Tweet"
           btnClassName="btnPost"
         />
-          <Tweets />
+          <Tweets posts = {posts} />
       </div>
       <div>
         <ButtonApp
