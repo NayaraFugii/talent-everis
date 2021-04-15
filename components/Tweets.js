@@ -58,7 +58,7 @@ const Tweets = () => {
                         </div>
                         <p className="postText">{post.data.text}</p> 
                             <p>{post.data.userName}</p>
-                            <p>{post.data.coment.comment}</p>
+                            {/* <p>{post.data.coment.comment}</p> */}
                         <TextArea 
                             textClassName="textComent"
                             textPlaceholder="Comentar"
