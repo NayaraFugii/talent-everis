@@ -64,12 +64,14 @@
     width: 500px;
     margin: 100px auto;
 }
+
 .textFeed{
     background-color:  #6666;
     color: #E6E6E6;
     border:none;
     border-radius: 5px;
 }
+
 .profileData{
  display: flex;
 }
@@ -111,6 +113,13 @@
     padding: 40px;
 }
 
+.tweets{
+    color: #E6E6E6;
+    margin-bottom: 22px;
+    border-radius: 7px;
+    width: 386px;
+}
+
 .textComent{
     display: flex;
     justify-content: center;
@@ -132,10 +141,57 @@
     margin-top: 16px;
     width: 32vw;
 }
+
  .dataName{
     margin-top: 6px;
     font-weight: bold;
     margin-top: 20px;
  }
 
+
+@media (max-width: 600px) {
+    .nav {
+        width: 30vw;
+    }
+
+    .logoCrow {
+        width: 70px;
+        height: 60px;
+        padding: 20px;
+    }
+
+    .FeedArea {
+        width: 60vw;
+    }
+
+    .textFeed{
+        width: 60vw;
+        margin-left: 20px;
+    }
+
+    .btnPost{
+        margin-left: 25vw;
+    }
+
+    .tweets {
+        width: 60vw;
+        margin-left: 20px;
+    }
+
+    .btnExit img {
+        width: 15px;
+    }
+
+    .btnExit {
+    margin: 3vh 3vw;
+    }
+
+    .comentFix{
+        width: 60vw;
+    }
+
+    .textComent{
+        width: 60vw;
+    }
+}
  
