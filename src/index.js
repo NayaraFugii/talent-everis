@@ -3,7 +3,6 @@ import Profile from './Profile'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
 import HomeApp from './HomeApp';
 import Login from './Login'
 import Register from './Register'
