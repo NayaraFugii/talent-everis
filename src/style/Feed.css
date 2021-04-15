@@ -13,13 +13,6 @@
     min-height: 100vh;
     min-width: 100vw;
 }
-
-.btns{
-    display: flex;
-    justify-content: space-between;
-    margin-left: 43px;
-}
-
 .btnExit,
 .btnProfile,
 .btnTweets{
@@ -29,6 +22,24 @@
     background-color: #333333;
     color: #E6E6E6;
     font-weight: bold;
+}
+
+.btns{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 43px;
+}
+
+.btnTweets{
+    margin: 6vh 3vw;
+    border: none;
+    border-radius: 15px;
+    background-color: #333333;
+    color: #E6E6E6;
+    font-weight: bold;
+}
+.btnTweets:hover {
+	background-color: rgba(228, 235, 235, 0.267);
 }
 
 .btnTweets{
@@ -52,6 +63,12 @@
     flex-direction: column;
     width: 500px;
     margin: 100px auto;
+}
+.textFeed{
+    background-color:  #6666;
+    color: #E6E6E6;
+    border:none;
+    border-radius: 5px;
 }
 .profileData{
  display: flex;
@@ -94,4 +111,31 @@
     padding: 40px;
 }
 
+.textComent{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    width: 32vw;
+    background-color:  #6666;
+    color: #E6E6E6;
+    border:none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
 
+.dataComent{
+    margin-top: 4px;
+}
+
+.comentFix{
+    border-top: 1px solid #6666;
+    margin-top: 16px;
+    width: 32vw;
+}
+ .dataName{
+    margin-top: 6px;
+    font-weight: bold;
+    margin-top: 20px;
+ }
+
+ 

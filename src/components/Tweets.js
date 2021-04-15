@@ -57,22 +57,21 @@ const Tweets = () => {
                             {post.data.user}</h3>
                         </div>
                         <p className="postText">{post.data.text}</p> 
-                            <p>{post.data.userName}</p>
-                            <p>{post.data.coment.comment}</p>
-                        <TextArea 
-                            textClassName="textComent"
-                            textPlaceholder="Comentar"
-                            textOnChange={(event) => setComment({postId: post.postId, comment: event.target.value})}
-                            textType= "text"
-                            />
-                            <ButtonApp
-                            buttonOnClick = {newComment}
-                            buttonImage= {ImgComment}
-                            btnClassName="btnTweets"
-                            />   
+                        <div className="comentFix">          
+                            <p className="dataName">{post.data.userName}</p>
+                            <p className="dataComent">{post.data.coment.comment}</p> 
+                        </div>    
+                        <div className="boxComent">  
+                            <TextArea 
+                                textClassName="textComent"
+                                textPlaceholder="Comentar"
+                                textOnChange={(event) => setComment({postId: post.postId, comment: event.target.value})}
+                                textType= "text"
+                                />
+                        </div>     
                         <div className='btns'>
                             <ButtonApp
-                                // buttonOnClick = {logout}
+                                buttonOnClick = {newComment} 
                                 buttonImage= {ImgComment}
                                 btnClassName="btnTweets"
                             />      
