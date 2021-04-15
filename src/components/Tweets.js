@@ -64,28 +64,24 @@ const Tweets = ({posts}) => {
                             textType= "text"
                             />
                         </div>
+                        <div className='btns'>
                             <ButtonApp
                             buttonOnClick = {()=>{newComment(post.postId)}}
                             buttonImage= {ImgComment}
                             btnClassName="btnTweets"
                             />   
-                        <div className='btns'>
+                            
                             <ButtonApp
-                                buttonOnClick = {newComment} 
-                                buttonImage= {ImgComment}
-                                btnClassName="btnTweets"
-                            />      
-                            <ButtonApp
-                                // buttonOnClick = {logout}
+                              
                                 buttonImage= {share}
                                 btnClassName="btnTweets"
                             /> 
-                            <p className="postText">{post.data.like}</p>   
                             <ButtonApp
                                 buttonOnClick = {()=>{likePost(post.postId)}}
                                 buttonImage= {like}
                                 btnClassName="btnTweets"
                             />    
+                                <label className="countLike">{post.data.like}</label>   
                         </div>                          
                     </div>)
                 })}

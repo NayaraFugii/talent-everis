@@ -26,8 +26,11 @@
 
 .btns{
     display: flex;
-    justify-content: space-between;
+    
     margin-left: 43px;
+}
+.countLike{
+  margin: 10px 0px 0px 0px;
 }
 
 .btnTweets{
