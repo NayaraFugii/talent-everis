@@ -71,7 +71,7 @@ const Tweets = () => {
                         </div>     
                         <div className='btns'>
                             <ButtonApp
-                                buttonOnClick = {newComment}
+                                buttonOnClick = {newComment} 
                                 buttonImage= {ImgComment}
                                 btnClassName="btnTweets"
                             />      

@@ -65,7 +65,10 @@
     margin: 100px auto;
 }
 .textFeed{
-    background-color:  #E6E6E6; 
+    background-color:  #6666;
+    color: #E6E6E6;
+    border:none;
+    border-radius: 5px;
 }
 .profileData{
  display: flex;
@@ -113,7 +116,11 @@
     justify-content: center;
     margin-bottom: 5px;
     width: 32vw;
-    background-color:  #E6E6E6;
+    background-color:  #6666;
+    color: #E6E6E6;
+    border:none;
+    border-radius: 5px;
+    margin-top: 20px;
 }
 
 .dataComent{
@@ -121,12 +128,14 @@
 }
 
 .comentFix{
-    border-top: 1px solid #c7c3c3;
+    border-top: 1px solid #6666;
     margin-top: 16px;
     width: 32vw;
 }
  .dataName{
     margin-top: 6px;
     font-weight: bold;
+    margin-top: 20px;
  }
 
+ 
