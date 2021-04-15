@@ -16,25 +16,10 @@ const userId = localStorage.getItem("uid")
 const Tweets = ({posts}) => {  
     
     const [countLike, setCountLike] = useState(0)
-    //const [posts, setPosts] = useState()
     const [comment, setComment] = useState({
         postId:'',
         comment: '', 
-    })
-
-    //useEffect(() => {
-        //getPosts()
-   // }, [])
-
-    //const getPosts = async () => {
-       // const response = await db.collection("post").get()
-        //const result = response.docs.map(item => {
-            //return {
-              //  postId: item.id,
-               // data: item.data()
-           // }})
-        //setPosts(result)
-       // }
+    })  
 
     const newComment = async (id)=>{       
         await db.collection("post").doc(id).set({
@@ -67,14 +52,18 @@ const Tweets = ({posts}) => {
                             {post.data.user}</h3>
                         </div>
                         <p className="postText">{post.data.text}</p> 
-                            <p>{post.data.userName}</p>
-                            <p>{post.data.coment.comment}</p>
+                        <div className="comentFix"> 
+                            <p className="dataName">{post.data.userName}</p>
+                            <p className="dataComent">{post.data.coment.comment}</p> 
+                        </div> 
+                        <div className="boxComent"> 
                         <TextArea 
                             textClassName="textComent"
                             textPlaceholder="Comentar"
                             textOnChange={(event) => setComment({postId: post.postId, comment: event.target.value})}
                             textType= "text"
                             />
+                        </div>
                             <ButtonApp
                             buttonOnClick = {()=>{newComment(post.postId)}}
                             buttonImage= {ImgComment}
@@ -82,7 +71,7 @@ const Tweets = ({posts}) => {
                             />   
                         <div className='btns'>
                             <ButtonApp
-                                // buttonOnClick = {logout}
+                                buttonOnClick = {newComment} 
                                 buttonImage= {ImgComment}
                                 btnClassName="btnTweets"
                             />      
